@@ -1,0 +1,147 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath,amssymb,fullpage,enumitem,amsthm,verbatim,graphicx}
+\usepackage{pifont}
+\usepackage[hidelinks]{hyperref}
+\usepackage{color}
+\usepackage{xcolor}
+
+\hypersetup{
+	colorlinks,
+	linkcolor={red!50!black},
+	citecolor={red!50!black},
+	urlcolor={blue!50!black}
+}
+\renewcommand{\P}{\mathbf{P}}
+\newcommand{\Pn}{\mathbf{P_n}}
+\newcommand{\Gn}{\mathbb{G}_n}
+\newcommand{\E}{\mathbf{E}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\cA}{\mathcal A}
+\newcommand{\cB}{\mathcal B}
+\newcommand{\cF}{\mathcal F}
+\newcommand{\cG}{\mathcal G}
+\newcommand{\cJ}{\mathcal J}
+\newcommand{\cM}{\mathcal M}
+\newcommand{\cN}{\mathcal N}
+\newcommand{\cP}{\mathcal P}
+\newcommand{\cU}{\mathcal U}
+\newcommand{\cW}{\mathcal W}
+\newcommand{\cX}{\mathcal X}
+\newcommand{\cY}{\mathcal Y}
+\newcommand{\cZ}{\mathcal Z}
+\newcommand{\vone}{\mathbf 1}
+\newcommand{\simple}{1}
+\newcommand{\fisher}{\mathbb{I}}
+\newcommand{\vA}{\mathbf A}
+\newcommand{\vb}{\mathbf b}
+\newcommand{\vdelta}{{\boldsymbol {\delta}}}
+\newcommand{\ve}{\mathbf e}
+\newcommand{\veta}{\boldsymbol \eta}
+\newcommand{\vf}{\mathbf f}
+\newcommand{\vG}{\mathbf G}
+\newcommand{\vH}{\mathbf H}
+\newcommand{\vs}{\mathbf s}
+\newcommand{\vt}{\mathbf t}
+\newcommand{\vv}{\mathbf v}
+\newcommand{\vy}{\mathbf y}
+\newcommand{\vyhat}{\hat{\mathbf y}}
+\newcommand{\vD}{\mathbf D}
+\newcommand{\vgamma}{{\boldsymbol {\gamma}}}
+\newcommand{\vI}{\mathbf I}
+\newcommand{\vM}{\mathbf M}
+\newcommand{\vphi}{{\boldsymbol {\varphi}}}
+\newcommand{\vQ}{\mathbf Q}
+\newcommand{\vSigma}{\mathbf {\Sigma}}
+\newcommand{\vT}{\mathbf T}
+\newcommand{\vtheta}{{\boldsymbol {\theta}}}
+\newcommand{\vTheta}{{\boldsymbol {\Theta}}}
+\newcommand{\vU}{\mathbf U}
+\newcommand{\vW}{\mathbf W}
+\newcommand{\vX}{{\mathbf X}}
+\newcommand{\vY}{{\mathbf Y}}
+\newcommand{\vZ}{\mathbf Z}
+\newcommand{\vbeta}{{\boldsymbol {\beta}}}
+\newcommand{\vbetahat}{\widehat {\boldsymbol \beta}}
+\newcommand{\vOmega}{\boldsymbol \Omega}
+\newcommand{\sumiN}{\sum_{i = 1}^N}
+\newcommand{\vmu}{\boldsymbol \mu}
+
+\newcommand{\vp}{\mathbf p}
+\newcommand{\vg}{\mathbf g}
+\newcommand{\vx}{\mathbf x}
+\newcommand{\vu}{\mathbf u}
+\newcommand{\vw}{\mathbf w}
+\newcommand{\vz}{\mathbf z}
+\newcommand{\vzero}{\mathbf 0}
+
+\newcommand{\convd}{\to_d}
+\newcommand{\convp}{\to_P}
+
+\newcommand{\eps}{\varepsilon}
+\newcommand{\xbar}{\overline{x}}
+\newcommand{\Xbar}{\overline{X}}
+\newcommand{\ybar}{\overline{y}}
+\newcommand{\Ybar}{\overline{Y}}
+\newcommand{\sigmahat}{\widetilde{\sigma}}
+\newcommand{\indep}{\perp}
+
+\newcommand{\isumn}{\sum_{i=1}^n}
+\newcommand{\iprodn}{\prod_{i=1}^n}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\interior}{int}
+\DeclareMathOperator{\Var}{Var}
+\DeclareMathOperator{\Poi}{Poi}
+\DeclareMathOperator{\Cov}{Cov}
+\DeclareMathOperator{\Exp}{Exp}
+\DeclareMathOperator{\vecop}{vec}
+\DeclareMathOperator{\Geom}{Geom}
+
+\newlist{todolist}{itemize}{2}
+\setlist[todolist]{label=$\square$}
+
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+\newcommand{\done}{\rlap{$\square$}{\raisebox{2pt}{\large\hspace{1pt}\cmark}}%
+	\hspace{-2.5pt}}
+\newcommand{\wontfix}{\rlap{$\square$}{\large\hspace{1pt}\xmark}}
+\newcommand{\progress}{\rlap{$\square$}{\large\hspace{1pt}\color{red}$\mathbf{\circ}$}}
+
+
+\theoremstyle{definition}
+\newtheorem{thm}{Proposition}[section]
+\newtheorem{lem}{Lemma}[section]
+\newtheorem{cor}{Corollary}[section]
+\newtheorem{defn}{Definition}[section]
+\newtheorem{remark}{Remarks}[section]
+\newtheorem{example}{Examples}[section]
+\newtheorem{algorithm}{Algorithm}[section]
+\newtheorem{assumption}{Assumption}[section]
+
+\newcommand{\thmautorefname}{Proposition}
+\newcommand{\lemautorefname}{Lemma}
+\newcommand{\defnautorefname}{Definition}
+\newcommand{\remarkautorefname}{Remarks}
+\newcommand{\exampleautorefname}{Example}
+\newcommand{\algorithmautorefname}{Algorithm}
+\newcommand{\assumptionautorefname}{Assumption}
+\linespread{1.3}
+
+
+
+%opening
+
+
+
+\begin{document}
+
+\noindent{\bf Notes on discretization of continuous-time operators  \hfill %
+	CY Ahn} 
+\noindent\rule{\textwidth}{.1mm}
+
+	Notes from \href{https://github.com/econtoolkit/continuous_time_methods/blob/master/operator_discretization_finite_differences.pdf}{\textbf{Discretizing Continuous-Time Operators with Finite Differences}} and \href{https://github.com/JuliaDiffEq/PDERoadmap/blob/master/linear_operators_overview.tex}{\textbf{Discretizing Linear and Affine Operators Overview}}.
+
+\end{document}
