@@ -59,14 +59,23 @@ Plotting locations
 ------------------
 
 ``` r
-ggplot(location.df, aes(x=lon, y=lat)) + 
-  borders("usa", colour="gray50", fill="white") +
-  geom_point(color="red", size=4) +
-  labs(x = "Longitude", y = "Latitude", title = "Firm locations") +
-  theme_bw()
+usa.map <- map_data("state") # load USA map from ggmap
 ```
 
     ## Warning: package 'maps' was built under R version 3.5.1
+
+``` r
+ggplot(location.df, aes(x=lon, y=lat)) + 
+  borders("usa", colour="gray50", fill="white") + 
+  geom_map(data=usa.map, map=usa.map,
+          aes(long, lat, map_id=region),
+          color="gray30", fill=NA) +
+  geom_point(color="red", size=4) + 
+  labs(x = "Longitude", y = "Latitude", title = "Firm locations") +
+  theme_bw() 
+```
+
+    ## Warning: Ignoring unknown aesthetics: x, y
 
 ![](sec-location_files/figure-markdown_github/plot-locations-1.png)
 

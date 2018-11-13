@@ -54,12 +54,15 @@ location.df <- data.frame(lon = lons, lat = lats)
 
 ## Plotting locations
 ```{r plot-locations}
+usa.map <- map_data("state") # load USA map from ggmap
 ggplot(location.df, aes(x=lon, y=lat)) + 
-  borders("usa", colour="gray50", fill="white") +
-  geom_point(color="red", size=4) +
+  borders("usa", colour="gray50", fill="white") + 
+  geom_map(data=usa.map, map=usa.map,
+          aes(long, lat, map_id=region),
+          color="gray30", fill=NA) +
+  geom_point(color="red", size=4) + 
   labs(x = "Longitude", y = "Latitude", title = "Firm locations") +
-  theme_bw()
-
+  theme_bw() 
 ```
 
 TODO: it might be interesting to see location difference across industries.
