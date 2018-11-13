@@ -1,0 +1,65 @@
+---
+title: "sec-location"
+author: "Chiyoung Ahn"
+date: "November 12, 2018"
+# output: html_document
+output:
+  md_document:
+    variant: markdown_github
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+# install.packages("rvest") # uncomment and run this line if rvest is not installed
+# install.packages("dplyr") # uncomment and run this line if dplyr is not installed
+# install.packages("stringr") # uncomment and run this line if stringr is not installed
+# install.packages("ggmap") # uncomment and run this line if ggmap is not installed
+library(rvest)
+library(dplyr)
+library(stringr)
+library(ggmap)
+```
+
+## Getting location
+It turns out that company addresses are not sufficient -- we need geographical locations in terms of latitude and longitude as well. One good news is that `ggmap` can handle this pretty well. Construct the following function that returns the address given an addresss string:
+```{r address-to-location}
+GetGeocode <- function (address) {
+  geocode(address, source = "dsk") # extract geocode using Data Science Toolkit
+}
+```
+
+For instance, the geocode of company `BOREALIS TECHNOLOGY CORP` from `https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001014767&owner=include&count=40&hidefilings=0` can be found by passing their business address:
+```{r address-to-location-example}
+address <- "4070 SILVER SAGE DR\nSTE 211\nCARSON CITY NV 89701"
+GetGeocode(address)
+```
+where `lon` and `lat` indicate its longitude and latitude respectively.
+
+### Multiple locations
+Getting multiple locations can be done by using `lapply` function:
+```{r addresses-to-locations}
+addresses <- c("4070 SILVER SAGE DR\nSTE 211\nCARSON CITY NV 89701",
+               "ONE APPLE PARK WAY\nCUPERTINO CA 95014")
+locations <- lapply(addresses, GetGeocode)
+print(locations)
+```
+
+`lapply` performs broadcasting a given function (second parameter) to a vector (first parameter) and returns a list, which is why it is called *l*`apply`. To extract longitudes and latitudes, one can call the followings.
+```{r extract-lon-lat}
+lons <- sapply(locations, "[[", "lon") # extract lon elements from a list of lists
+lats <- sapply(locations, "[[", "lat") # extract lat elements from a list of lists
+location.df <- data.frame(lon = lons, lat = lats)
+```
+
+
+## Plotting locations
+```{r plot-locations}
+ggplot(location.df, aes(x=lon, y=lat)) + 
+  borders("usa", colour="gray50", fill="white") +
+  geom_point(color="red", size=4) +
+  labs(x = "Longitude", y = "Latitude", title = "Firm locations") +
+  theme_bw()
+
+```
+
+TODO: it might be interesting to see location difference across industries.
